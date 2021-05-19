@@ -1,51 +1,169 @@
 {
   "name": "vscode-cpp-class-completion",
-	"displayName": "VSCode C++ Class Completion",
-	"description": "Get C++ class completion suggestions based on single predefinied keys for classes.",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.56.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onCommand:vscode-cpp-class-completion.helloWorld"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "vscode-cpp-class-completion.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run package",
-		"compile": "webpack",
-		"watch": "webpack --watch",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"test-compile": "tsc -p ./",
-		"test-watch": "tsc -watch -p ./",
-		"pretest": "yarn run test-compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.56.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.19.0",
-		"@typescript-eslint/eslint-plugin": "^4.14.1",
-		"@typescript-eslint/parser": "^4.14.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.2.1",
-		"typescript": "^4.1.3",
-		"vscode-test": "^1.5.0",
-		"ts-loader": "^8.0.14",
-		"webpack": "^5.19.0",
-		"webpack-cli": "^4.4.0"
-	}
+  "version": "1.0.0",
+  "publisher": "drswad",
+  "author": {
+    "name": "Nayeemul Islam Swad",
+    "email": "drswad2013@gmail.com"
+  },
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "displayName": "VSCode C++ Class Completion",
+  "description": "Get C++ class autocomplete suggestions based on custom predefined keymaps for classes.",
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Keymaps"
+  ],
+  "keywords": [
+    "C++",
+    "Class",
+    "Completion",
+    "Competitive Programming",
+    "CP"
+  ],
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#651FFF",
+    "theme": "light"
+  },
+  "activationEvents": [
+    "onLanguage:cpp"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "title": "C++ Class Completion",
+    "properties": {
+      "cppClassCompletion.keymaps": {
+        "type": "object",
+        "default": {
+          "i": {
+            "class": "int",
+            "parameters": 0
+          },
+          "l": {
+            "class": "long long",
+            "parameters": 0
+          },
+          "f": {
+            "class": "float",
+            "parameters": 0
+          },
+          "d": {
+            "class": "double",
+            "parameters": 0
+          },
+          "D": {
+            "class": "long double",
+            "parameters": 0
+          },
+          "c": {
+            "class": "char",
+            "parameters": 0
+          },
+          "s": {
+            "class": "string",
+            "parameters": 0
+          },
+          "p": {
+            "class": "pair",
+            "parameters": 2
+          },
+          "t": {
+            "class": "tuple"
+          },
+          "m": {
+            "class": "map",
+            "parameters": 2
+          },
+          "u": {
+            "class": "unordered_map",
+            "parameters": 2
+          },
+          "a": {
+            "class": "array",
+            "parameters": 2
+          },
+          "v": {
+            "class": "vector",
+            "parameters": 1
+          },
+          "q": {
+            "class": "queue",
+            "parameters": 1
+          },
+          "S": {
+            "class": "set",
+            "parameters": 1
+          },
+          "P": {
+            "class": "priority_queue",
+            "parameters": 1
+          },
+          "T": {
+            "class": "stack",
+            "parameters": 1
+          },
+          "L": {
+            "class": "list",
+            "parameters": 1
+          }
+        },
+        "description": "Define keymaps for classes"
+      },
+      "cppClassCompletion.leastNumOfChars": {
+        "type": "number",
+        "default": 1,
+        "description": "Least number of characters to be typed before completion list will be shown"
+      },
+      "cppClassCompletion.addSpaceAfterCompletion": {
+        "type": "boolean",
+        "default": true,
+        "description": "Add a space after completion"
+      },
+      "cppClassCompletion.enableInStringAndComment": {
+        "type": "boolean",
+        "default": false,
+        "markdownDescription": "Whether to enable completion in string and comment"
+      }
+    }
+  },
+  "homepage": "https://github.com/DrSwad/vscode-cpp-class-completion/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/DrSwad/vscode-cpp-class-completion/issues",
+    "email": "drswad2013@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DrSwad/vscode-cpp-class-completion.git"
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "yarn run test-compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.56.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.19.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0",
+    "ts-loader": "^8.0.14",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  }
 }

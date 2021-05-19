@@ -1,70 +1,124 @@
-# vscode-cpp-class-completion README
+# VSCode C++ Class Completion
 
-This is the README for your extension "vscode-cpp-class-completion". After writing up a brief description, we recommend including the following sections.
+Get C++ class autocomplete suggestions based on custom predefined keymaps for classes.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+\!\[Class Completion\]\(assets/VSCode C++ Class Completion Demo.gif\)
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Get suggestions for long and complex nested class names based on a few typed keys.
+2. Customize the keymaps for each class according to your own preference.
+3. Support for variable number of template parameters. Just exclude the parameter key from the keymap, and you can then define the number of parameters after pressing that key. For example, if the character `t` is mapped in the following way - `{"t": {"class": "tuple"}}`, then typing `t3iii` will show `tuple<int, int, int>` as a suggestion.
+4. Support for numbers as template parameters. For example, in the default settings, typing `ai2` will show `array<int, 2>` as a suggestion.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+In order make sure that the class completions are prioritized before all other suggestions, set the `editor.snippetSuggestions` to `top` in your editor's `settings.json` file.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+You can customize the extension by modifying the following fields in settings:
 
-For example:
+* `cppClassCompletion.keymaps`: Keymaps for most of the common STL classes are defined by default. But you can have your own through this setting. It needs to be an object with each key being the character that is being mapped. The corresponding value to each key is an object with two fields:
+  * class (required): The class name corresponding to that key character
+  * parameters (optional): Number of parameters for that class
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+  Default:
+  ```
+  {
+    "i": {
+      "class": "int",
+      "parameters": 0
+    },
+    "l": {
+      "class": "long long",
+      "parameters": 0
+    },
+    "f": {
+      "class": "float",
+      "parameters": 0
+    },
+    "d": {
+      "class": "double",
+      "parameters": 0
+    },
+    "D": {
+      "class": "long double",
+      "parameters": 0
+    },
+    "c": {
+      "class": "char",
+      "parameters": 0
+    },
+    "s": {
+      "class": "string",
+      "parameters": 0
+    },
+    "p": {
+      "class": "pair",
+      "parameters": 2
+    },
+    "t": {
+      "class": "tuple"
+    },
+    "m": {
+      "class": "map",
+      "parameters": 2
+    },
+    "u": {
+      "class": "unordered_map",
+      "parameters": 2
+    },
+    "a": {
+      "class": "array",
+      "parameters": 2
+    },
+    "v": {
+      "class": "vector",
+      "parameters": 1
+    },
+    "q": {
+      "class": "queue",
+      "parameters": 1
+    },
+    "S": {
+      "class": "set",
+      "parameters": 1
+    },
+    "P": {
+      "class": "priority_queue",
+      "parameters": 1
+    },
+    "T": {
+      "class": "stack",
+      "parameters": 1
+    },
+    "L": {
+      "class": "list",
+      "parameters": 1
+    }
+  }
+  ```
+* `cppClassCompletion.leastNumOfChars`: Least number of characters to be typed before completion list will be shown. Default `1`.
+* `cppClassCompletion.addSpaceAfterCompletion`: Add a space after completion. Default `true`.
+* `cppClassCompletion.enableInStringAndComment`: Whether to enable completion in string and comment. Default `false`.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None so far 🤠
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+Initial release.
 
-### 1.0.1
+# Acknowledgements
 
-Fixed issue #.
+1. Icon made by [https://www.freepik.com](Freepik) from [https://www.flaticon.com/](Flaticon).
 
-### 1.1.0
-
-Added features X, Y, and Z.
+2. Inspired by the sublime text extension [https://github.com/Jatana/FastOlympicCoding](FastOlympicCoding) by Jatana.
 
 -----------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**

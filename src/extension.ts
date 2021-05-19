@@ -1,27 +1,53 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import ClassCompletionItemProvider from './ClassCompletionItemProvider';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const cppDocSelector = [{ language: 'cpp', scheme: 'file' }, { language: 'cpp', scheme: 'untitled' }];
+  context.subscriptions.push(
+    vscode.languages.registerCompletionItemProvider(cppDocSelector, new ClassCompletionItemProvider())
+  );
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vscode-cpp-class-completion" is now active!');
+  vscode.workspace.onDidChangeConfiguration(e => {
+    if (e.affectsConfiguration('cppClassCompletion.enableInStringAndComment')) {
+      vscode.window.showInformationMessage("Please reload VSCode to take effect. (Class completion for comments and strings)");
+    }
+  });
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('vscode-cpp-class-completion.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from VSCode C++ Class Completion!');
-	});
-
-	context.subscriptions.push(disposable);
+  // Feature: enable completion in string and comment
+  if (vscode.workspace.getConfiguration('cppClassCompletion').get<boolean>('enableInStringAndComment')) {
+    // Make sure `quickSuggestions` for string/comment is enabled
+    const cfgQuickSuggestions = vscode.workspace.getConfiguration('editor').get<{other: boolean, comments: boolean, strings: boolean}>('quickSuggestions');
+    const cppObject = vscode.workspace.getConfiguration("[cpp]");
+    const somehowSet: boolean = (cfgQuickSuggestions?.['comments'] && cfgQuickSuggestions?.['strings'])
+      || cppObject?.['editor.quickSuggestions'];
+    if (!somehowSet && !context.globalState.get<boolean>('cppClassCompl.enableInStringAndComment.userDisabled', false)) {
+      const option1 = 'Do it';
+      const option2 = 'Disable';
+      const option3 = 'Remind me later';
+      vscode.window.showInformationMessage(
+        'To enable class completion for inside comments and strings, we need to enable `quickSuggestions` for string/comment in user settings.',
+        option1,
+        option2,
+        option3
+      ).then(option => {
+        switch (option) {
+          case option1:
+            vscode.workspace.getConfiguration('editor').update('quickSuggestions', {
+              "other": true,
+              "comments": true,
+              "strings": true
+            }, vscode.ConfigurationTarget.Global);
+            break;
+          case option2:
+            context.globalState.update('cppClassCompl.enableInStringAndComment.userDisabled', true);
+            vscode.workspace.getConfiguration('cppClassCompletion').update('enableInStringAndComment', false, vscode.ConfigurationTarget.Global);
+            break;
+          case option3:
+            break;
+        }
+      });
+    }
+  }
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
