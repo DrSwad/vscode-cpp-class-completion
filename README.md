@@ -4,7 +4,7 @@ Get C++ class autocomplete suggestions based on custom predefined keymaps for cl
 
 ## Features
 
-![Class Completion](https://github.com/DrSwad/vscode-cpp-class-completion/blob/main/assets/VSCode C++ Class Completion Demo.gif)
+![Class Completion](https://github.com/DrSwad/vscode-cpp-class-completion/blob/main/assets/VSCode%20C%2B%2B%20Class%20Completion%20Demo.gif)
 
 1. Get suggestions for long and complex nested class names based on a few typed keys.
 2. Customize the keymaps for each class according to your own preference.
