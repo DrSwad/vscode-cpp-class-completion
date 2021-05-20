@@ -1,6 +1,8 @@
 # VSCode C++ Class Completion
 
-Get C++ class autocomplete suggestions based on custom predefined keymaps for classes.
+C++ class autocompletion suggestions based on custom predefined keymaps for classes.
+
+If you have found an issue or would like to request a new feature, kindly open a new issue. Pull requests are most welcome. **Enjoy!**
 
 ## Features
 
@@ -8,7 +10,7 @@ Get C++ class autocomplete suggestions based on custom predefined keymaps for cl
 
 1. Get suggestions for long and complex nested class names based on a few typed keys.
 2. Customize the keymaps for each class according to your own preference.
-3. Support for variable number of template parameters. Just exclude the parameter key from the keymap, and you can then define the number of parameters after pressing that key. For example, if the character `t` is mapped in the following way - `{"t": {"class": "tuple"}}`, then typing `t3iii` will show `tuple<int, int, int>` as a suggestion.
+3. Support for variable number of template parameters. Just exclude the parameter key from the keymap in settings, and you can then define the number of parameters everytime after pressing that key. For example, if the character `t` is mapped in the following way - `{"t": {"class": "tuple"}}`, then typing `t3iii` will show `tuple<int, int, int>` as a suggestion.
 4. Support for numbers as template parameters. For example, in the default settings, typing `ai2` will show `array<int, 2>` as a suggestion.
 
 ## Requirements
@@ -19,9 +21,9 @@ In order make sure that the class completions are prioritized before all other s
 
 You can customize the extension by modifying the following fields in settings:
 
-* `cppClassCompletion.keymaps`: Keymaps for most of the common STL classes are defined by default. But you can have your own through this setting. It needs to be an object with each key being the character that is being mapped. The corresponding value to each key is an object with two fields:
-  * class (required): The class name corresponding to that key character
-  * parameters (optional): Number of parameters for that class
+* `cppClassCompletion.keymaps`: Keymaps for most of the common STL classes are defined by default. But you can have your own through this setting. It needs to be an object with each key being the character that is being mapped. The corresponding value for each key needs to be an object with following fields:
+  * class (required): The class name corresponding to that character
+  * parameters (optional): Number of parameters for that class (Ignore if the number is not fixed)
 
   Default:
   ```
@@ -107,7 +109,20 @@ You can customize the extension by modifying the following fields in settings:
 
 None so far 🤠
 
+## Contribution
+
+1. Clone the repository in your preferred directory: `git clone https://github.com/DrSwad/vscode-cpp-class-completion.git [directory name]`
+2. Install the npm dependencies: `yarn` or `npm install`
+3. Run the build script in watch mode: `yarn watch` or `npm run watch`
+
 ## Release Notes
+
+### 1.0.1
+
+* Fixed a bug in settings configuration.
+* Removed an unnecessary warning on settings update.
+* Fixed broken demo URL in extension readme in VSCode Marketplace.
+* Minor documentation updates.
 
 ### 1.0.0
 
@@ -117,8 +132,6 @@ Initial release.
 
 1. Icon made by [https://www.freepik.com](Freepik) from [https://www.flaticon.com/](Flaticon).
 
-2. Inspired by the sublime text extension [https://github.com/Jatana/FastOlympicCoding](FastOlympicCoding) by Jatana.
+2. Inspired from the sublime text extension [https://github.com/Jatana/FastOlympicCoding](FastOlympicCoding) by Jatana.
 
 -----------------------------------------------------------------------------------------------------------
-
-**Enjoy!**
