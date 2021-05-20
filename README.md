@@ -109,7 +109,7 @@ You can customize the extension by modifying the following fields in settings:
 
 None so far 🤠
 
-## Contribution
+## Contributing
 
 1. Clone the repository in your preferred directory: `git clone https://github.com/DrSwad/vscode-cpp-class-completion.git [directory name]`
 2. Install the npm dependencies: `yarn` or `npm install`
