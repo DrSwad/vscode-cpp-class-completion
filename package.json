@@ -34,99 +34,101 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "title": "C++ Class Completion",
-    "properties": {
-      "cppClassCompletion.keymaps": {
-        "type": "object",
-        "default": {
-          "i": {
-            "class": "int",
-            "parameters": 0
+    "configuration": {
+      "title": "C++ Class Completion",
+      "properties": {
+        "cppClassCompletion.keymaps": {
+          "type": "object",
+          "default": {
+            "i": {
+              "class": "int",
+              "parameters": 0
+            },
+            "l": {
+              "class": "long long",
+              "parameters": 0
+            },
+            "f": {
+              "class": "float",
+              "parameters": 0
+            },
+            "d": {
+              "class": "double",
+              "parameters": 0
+            },
+            "D": {
+              "class": "long double",
+              "parameters": 0
+            },
+            "c": {
+              "class": "char",
+              "parameters": 0
+            },
+            "s": {
+              "class": "string",
+              "parameters": 0
+            },
+            "p": {
+              "class": "pair",
+              "parameters": 2
+            },
+            "t": {
+              "class": "tuple"
+            },
+            "m": {
+              "class": "map",
+              "parameters": 2
+            },
+            "u": {
+              "class": "unordered_map",
+              "parameters": 2
+            },
+            "a": {
+              "class": "array",
+              "parameters": 2
+            },
+            "v": {
+              "class": "vector",
+              "parameters": 1
+            },
+            "q": {
+              "class": "queue",
+              "parameters": 1
+            },
+            "S": {
+              "class": "set",
+              "parameters": 1
+            },
+            "P": {
+              "class": "priority_queue",
+              "parameters": 1
+            },
+            "T": {
+              "class": "stack",
+              "parameters": 1
+            },
+            "L": {
+              "class": "list",
+              "parameters": 1
+            }
           },
-          "l": {
-            "class": "long long",
-            "parameters": 0
-          },
-          "f": {
-            "class": "float",
-            "parameters": 0
-          },
-          "d": {
-            "class": "double",
-            "parameters": 0
-          },
-          "D": {
-            "class": "long double",
-            "parameters": 0
-          },
-          "c": {
-            "class": "char",
-            "parameters": 0
-          },
-          "s": {
-            "class": "string",
-            "parameters": 0
-          },
-          "p": {
-            "class": "pair",
-            "parameters": 2
-          },
-          "t": {
-            "class": "tuple"
-          },
-          "m": {
-            "class": "map",
-            "parameters": 2
-          },
-          "u": {
-            "class": "unordered_map",
-            "parameters": 2
-          },
-          "a": {
-            "class": "array",
-            "parameters": 2
-          },
-          "v": {
-            "class": "vector",
-            "parameters": 1
-          },
-          "q": {
-            "class": "queue",
-            "parameters": 1
-          },
-          "S": {
-            "class": "set",
-            "parameters": 1
-          },
-          "P": {
-            "class": "priority_queue",
-            "parameters": 1
-          },
-          "T": {
-            "class": "stack",
-            "parameters": 1
-          },
-          "L": {
-            "class": "list",
-            "parameters": 1
-          }
+          "description": "Define keymaps for classes"
         },
-        "description": "Define keymaps for classes"
-      },
-      "cppClassCompletion.leastNumOfChars": {
-        "type": "number",
-        "default": 1,
-        "description": "Least number of characters to be typed before completion list will be shown"
-      },
-      "cppClassCompletion.addSpaceAfterCompletion": {
-        "type": "boolean",
-        "default": true,
-        "description": "Add a space after completion"
-      },
-      "cppClassCompletion.enableInStringAndComment": {
-        "type": "boolean",
-        "default": false,
-        "markdownDescription": "Whether to enable completion in string and comment"
+        "cppClassCompletion.leastNumOfChars": {
+          "type": "number",
+          "default": 1,
+          "description": "Least number of characters to be typed before completion list will be shown"
+        },
+        "cppClassCompletion.addSpaceAfterCompletion": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add a space after completion"
+        },
+        "cppClassCompletion.enableInStringAndComment": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Whether to enable completion in string and comment"
+        }
       }
     }
   },
