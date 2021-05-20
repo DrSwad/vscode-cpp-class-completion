@@ -7,12 +7,6 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.languages.registerCompletionItemProvider(cppDocSelector, new ClassCompletionItemProvider())
   );
 
-  vscode.workspace.onDidChangeConfiguration(e => {
-    if (e.affectsConfiguration('cppClassCompletion.enableInStringAndComment')) {
-      vscode.window.showInformationMessage("Please reload VSCode to take effect. (Class completion for comments and strings)");
-    }
-  });
-
   // Feature: enable completion in string and comment
   if (vscode.workspace.getConfiguration('cppClassCompletion').get<boolean>('enableInStringAndComment')) {
     // Make sure `quickSuggestions` for string/comment is enabled
