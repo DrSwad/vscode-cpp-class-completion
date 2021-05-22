@@ -1,6 +1,6 @@
 {
   "name": "vscode-cpp-class-completion",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "drswad",
   "author": {
     "name": "Nayeemul Islam Swad",
@@ -60,6 +60,10 @@
               "class": "long double",
               "parameters": 0
             },
+            "b": {
+              "class": "bool",
+              "parameters": 0
+            },
             "c": {
               "class": "char",
               "parameters": 0
@@ -93,6 +97,14 @@
             },
             "q": {
               "class": "queue",
+              "parameters": 1
+            },
+            "Q": {
+              "class": "deque",
+              "parameters": 1
+            },
+            "B": {
+              "class": "bitset",
               "parameters": 1
             },
             "S": {

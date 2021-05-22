@@ -30,6 +30,10 @@ const defaultKeymaps : Keymap = {
     "class": "long double",
     "parameters": 0
   },
+  "b": {
+    "class": "bool",
+    "parameters": 0
+  },
   "c": {
     "class": "char",
     "parameters": 0
@@ -63,6 +67,14 @@ const defaultKeymaps : Keymap = {
   },
   "q": {
     "class": "queue",
+    "parameters": 1
+  },
+  "Q": {
+    "class": "deque",
+    "parameters": 1
+  },
+  "B": {
+    "class": "bitset",
     "parameters": 1
   },
   "S": {

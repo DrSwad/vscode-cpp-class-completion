@@ -48,6 +48,10 @@ You can customize the extension by modifying the following fields in settings:
       "class": "long double",
       "parameters": 0
     },
+    "b": {
+      "class": "bool",
+      "parameters": 0
+    },
     "c": {
       "class": "char",
       "parameters": 0
@@ -83,6 +87,14 @@ You can customize the extension by modifying the following fields in settings:
       "class": "queue",
       "parameters": 1
     },
+    "Q": {
+      "class": "deque",
+      "parameters": 1
+    },
+    "B": {
+      "class": "bitset",
+      "parameters": 1
+    },
     "S": {
       "class": "set",
       "parameters": 1
@@ -116,6 +128,10 @@ None so far 🤠
 3. Run the build script in watch mode: `yarn watch` or `npm run watch`
 
 ## Release Notes
+
+### 1.0.2
+
+* Added `bool`, `deque` and `bitset` to the default keymaps. No clue how I missed `bool` the first time.
 
 ### 1.0.1
 
